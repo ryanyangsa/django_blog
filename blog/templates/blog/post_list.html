@@ -1,19 +1,13 @@
-<!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <title>라이언양의 블로그</title>
-  </head>
-  <body>
-    <div>
-      <h1><a href="/">라이언양의 블로그</a></h1>
-    </div>
-    {% for post in posts %}
-    <div>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  {% for post in posts %}
+  <div class="post">
+    <div class="date">
       <p>published: {{ post.published_date }}</p>
-      <h1><a href="">{{ post.title }}</a></h1>
-      <p>{{ post.text|linebreaksbr }}</p>
     </div>
-    {% endfor %}
-  </body>
-</html>
+    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+    <p>{{ post.text|linebreaksbr|truncatechars_html:100 }}</p>
+  </div>
+  {% endfor %}
+{% endblock %}
