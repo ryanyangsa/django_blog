@@ -1,4 +1,19 @@
-<html>
-    <p>Hi there!</p>
-    <p>It works!</p>
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>라이언양의 블로그</title>
+  </head>
+  <body>
+    <div>
+      <h1><a href="/">라이언양의 블로그</a></h1>
+    </div>
+    {% for post in posts %}
+    <div>
+      <p>published: {{ post.published_date }}</p>
+      <h1><a href="">{{ post.title }}</a></h1>
+      <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+    {% endfor %}
+  </body>
 </html>
